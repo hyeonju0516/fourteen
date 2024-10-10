@@ -1,1 +1,19 @@
 # 14기 스터디 프로젝트 ╰(*°▽°*)╯
+
+---
+
+## 🗣 프로젝트 소개
+현직 풀스택 개발자가 멘토링하는 스터디 그룹으로 다양한 현업 기능 및 코드를 배우고 활용합니다.
+
+
+## ⏳ 개발기간
+- 2024.05 - 2024.10
+
+### ⚙️ 개발환경
+- **OS** : Window 10  
+- **IDE** : Eclipse, VS Code, dbeaver, Intellij
+- **SCM** : GitLab  
+- **Language** : Java, JSP, Servlet, JavaScript, HTML5, CSS3  
+- **Framework** : Spring(4.3.x), Mybatis  
+- **Web Server** : Apache tomcat 9.0  
+- **Database** : Oracle
