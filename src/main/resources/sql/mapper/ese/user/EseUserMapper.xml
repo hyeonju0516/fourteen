@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="co.kr.fourteen.ese.user.mapper.EseUserMapper">
+
+	<select id="doubleCheckId" parameterType="String" resultType="int">
+		SELECT COUNT(USER_ID) AS CNT
+		FROM USER_INFO
+		WHERE USER_ID = #{value }
+	</select>
+
+	<insert id="insertInfo" parameterType="EseUserVo">
+		INSERT INTO USER_INFO (
+			REGIST_NO
+			, USER_ID
+			, USER_PW
+			, USER_NM
+			, USER_EMAIL
+			, USER_PHONE
+			, USER_ZIP_CODE
+			, USER_FIRST_ADDR
+			, USER_SECOND_ADDR
+			, REG_DE
+		) VALUES (
+			USER_INFO_SEQ.NEXTVAL
+			, #{userId }
+			, #{userPw }
+			, #{userNm }
+			, #{userEmail } || '@' || #{userDomail }
+			, #{userPhone }
+			, #{userZipCode }
+			, #{userFirstAddr }
+			, #{userSecondAddr }
+			, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
+		)
+	</insert>
+
+
+
+</mapper>

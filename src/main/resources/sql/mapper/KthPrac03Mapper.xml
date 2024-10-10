@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.kr.fourteen.taengEe.prac03.mapper.KthPrac03Mapper">
+
+	<insert id="addInfo" parameterType="co.kr.fourteen.taengEe.prac03.vo.KthPrac03Vo">
+		INSERT INTO KTH_USER_INFO_03(
+			ID
+			, NAME
+			, EMAIL
+			, PHONE
+			, ADDR
+		) VALUES (
+			#{id }
+			, #{name }
+			, #{email }
+			, #{phone }
+			, #{addr }
+		)
+	</insert>
+
+	<select id="list" resultType="co.kr.fourteen.taengEe.prac03.vo.KthPrac03Vo">
+		SELECT
+			ID
+			, NAME
+			, EMAIL
+			, PHONE
+			, ADDR
+		FROM KTH_USER_INFO_03
+	</select>
+
+</mapper>

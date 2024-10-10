@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.kr.fourteen.hoseong.oracle.mapper.HoOracleMapper">
+
+	<select id="selectUserInfoList" resultType="co.kr.fourteen.hoseong.oracle.vo.HoOracleVo">
+		SELECT *
+		FROM HOSEONG_USER_INFO
+	</select>
+
+	<select id="selectUserInfoToNo" parameterType="java.lang.Integer" resultType="co.kr.fourteen.hoseong.oracle.vo.HoOracleVo">
+		SELECT *
+		FROM HOSEONG_USER_INFO
+		WHERE USER_NO = #{userNo}
+	</select>
+
+	<select id="selectMaxUserNo" resultType="java.lang.Integer">
+		SELECT NVL(MAX(USER_NO), 0) + 1 AS USER_NO
+		FROM HOSEONG_USER_INFO
+	</select>
+
+	<select id="selectUserIdCount" resultType="java.lang.Integer">
+		SELECT count(*)
+		FROM HOSEONG_USER_INFO
+		WHERE ID = #{id}
+	</select>
+
+	<select id="selectCityList" resultType="java.lang.String">
+		SELECT DISTINCT CITY
+		FROM HOSEONG_CITY
+	</select>
+
+	<select id="selectCountyList" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT DISTINCT COUNTY
+		FROM HOSEONG_CITY
+		WHERE CITY = #{data}
+	</select>
+
+	<select id="selectDistrictList" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT DISTINCT DISTRICT
+		FROM HOSEONG_CITY
+		WHERE COUNTY = #{data}
+	</select>
+
+	<insert id="insertUserInfo" parameterType="co.kr.fourteen.hoseong.oracle.vo.HoOracleVo">
+		INSERT INTO HOSEONG_USER_INFO(
+			USER_NO,
+			ID,
+			NAME,
+			PHONE,
+			ADDR,
+			EMAIL
+		) VALUES (
+			#{userNo},
+			#{id},
+			#{name},
+			#{phone},
+			#{addr},
+			#{email}
+		)
+	</insert>
+
+	<update id="updateUserInfo" parameterType="co.kr.fourteen.hoseong.oracle.vo.HoOracleVo">
+		UPDATE HOSEONG_USER_INFO
+		SET NAME = #{name},
+			PHONE = #{phone},
+			ADDR = #{addr},
+			EMAIL = #{email}
+		WHERE USER_NO = #{userNo}
+	</update>
+
+	<delete id="deleteUserInfo" parameterType="java.lang.Integer">
+		DELETE FROM HOSEONG_USER_INFO
+		WHERE USER_NO = #{userNo}
+	</delete>
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+	<context:annotation-config />
+
+	<!-- 등록해야 할 Bean 클래스를 scan해서 대상이 되는 클래스를 자동으로 Spring Bean으로 등록하는 <context:component-scan> 태그 -->
+	<!-- context:exclude-filter 빈으로 등록을 안하겠다는 선언 -->
+	<context:component-scan base-package="co.kr.fourteen">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+
+	<!-- 암호화 유틸 Aspect -->
+	<!-- <aop:aspectj-autoproxy /> -->
+
+	<!-- <import resource="classpath*:config/spring/com/**/context-datasource.xml"/>
+	<import resource="classpath*:config/spring/com/**/context-mapper.xml"/> -->
+
+</beans>

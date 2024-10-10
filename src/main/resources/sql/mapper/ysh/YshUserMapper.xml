@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.kr.fourteen.seHyun.user.mapper.YshUserMapper">
+
+    <select id="idDoubleCheck" parameterType="String" resultType="int">
+        SELECT COUNT(USER_ID)
+        FROM USER_INFO
+        WHERE USER_ID = #{userId}
+    </select>
+
+    <select id="findId" parameterType="String" resultType="String">
+        SELECT USER_ID
+        FROM USER_INFO
+        WHERE USER_NM = #{userName}
+    </select>
+
+    <select id="userLogin" parameterType="co.kr.fourteen.seHyun.user.vo.YshUserVo"
+            resultType="co.kr.fourteen.seHyun.user.vo.YshUserVo">
+        SELECT USER_ID
+        , USER_NM
+        FROM USER_INFO
+        WHERE USER_ID = #{userId} AND USER_PW = #{userPw}
+    </select>
+
+    <insert id="userJoin" parameterType="co.kr.fourteen.seHyun.user.vo.YshUserVo">
+        INSERT INTO USER_INFO (
+        USER_ID
+        , USER_PW
+        , USER_NM
+        , USER_EMAIL
+        , USER_PHONE
+        , USER_ZIP_CODE
+        , USER_FIRST_ADDR
+        , USER_SECOND_ADDR
+        )
+        VALUES (
+        #{userId}
+        , #{userPw}
+        , #{userNm}
+        , #{userEmail}
+        , #{userPhone}
+        , #{userZipCode}
+        , #{userFirstAddr}
+        , #{userSecondAddr}
+        )
+    </insert>
+
+</mapper>

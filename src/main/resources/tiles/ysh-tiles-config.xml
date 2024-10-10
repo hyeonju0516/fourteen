@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+
+<tiles-definitions>
+
+    <definition name="yshMainTemplate" template="/WEB-INF/tiles/ysh/mainPageLayout.jsp">
+        <put-attribute name="title" value="크놉스 시스템"/>
+        <put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/ysh/menu/menu.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/include/tiles/include-footer.jsp"/>
+    </definition>
+
+    <definition name="yshUserJoinTemplate" template="/WEB-INF/tiles/ysh/userJoinPageLayout.jsp">
+        <put-attribute name="title" value="크놉스 시스템"/>
+        <put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/ysh/menu/menu.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/include/tiles/include-footer.jsp"/>
+    </definition>
+
+    <!--main요청-->
+    <definition name="ysh/main/*" extends="yshMainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/ysh/main/{1}.jsp"/>
+    </definition>
+
+    <!--menu 2deps 요청-->
+    <definition name="ysh/menu/sub/*" extends="yshMainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/ysh/menu/sub/{1}.jsp"/>
+    </definition>
+
+    <!--userJoin 요청-->
+    <definition name="ysh/user/*" extends="yshUserJoinTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/ysh/user/{1}.jsp"/>
+    </definition>
+
+
+    <!--practice tiles-->
+    <!--회원가입 폼 템플릿-->
+    <definition name="yshPracticeUserJoinTemplate" template="/WEB-INF/tiles/ysh/uesrJoinPageLayout.jsp">
+        <put-attribute name="title" value="크놉스 시스템"/>
+        <put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/ysh/practice/menu/menu.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/include/tiles/include-footer.jsp"/>
+    </definition>
+
+    <!--idSearch 폼 템플릿-->
+    <definition name="yshPracticeIdSearch" template="/WEB-INF/tiles/ysh/idSearchPageLayout.jsp">
+        <put-attribute name="title" value="크놉스 시스템"/>
+        <put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/views/ysh/practice/menu/menu.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/include/tiles/include-footer.jsp"/>
+    </definition>
+
+    <!--ajax 연습-->
+    <definition name="ysh/practice/ajax/*" extends="yshMainTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/ysh/practice/ajax/{1}.jsp"/>
+    </definition>
+
+    <!--user join 요청-->
+    <definition name="ysh/practice/user/*" extends="yshPracticeUserJoinTemplate">
+        <put-attribute name="content" value="/WEB-INF/views/ysh/practice/user/{1}.jsp"/>
+    </definition>
+
+    <!--idSearch 요청-->
+    <definition name="ysh/practice/search/*" extends="yshPracticeIdSearch">
+        <put-attribute name="content" value="/WEB-INF/views/ysh/practice/search/{1}.jsp"/>
+    </definition>
+
+    <!--idSearch/joinCheck 요청-->
+    <definition name="ysh/practice/search/*/*" extends="yshPracticeIdSearch">
+        <put-attribute name="content" value="/WEB-INF/views/ysh/practice/search/{1}/{2}.jsp"/>
+    </definition>
+
+
+</tiles-definitions>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.kr.fourteen.common.util.mapper.CertifiMapper">
+
+	<delete id="deleteTempKey" parameterType="String">
+		DELETE
+		FROM CERTIFICATION_TEMPKEY
+		WHERE PHONE = #{value }
+
+		/* co.kr.fourteen.common.util.co.kr.fourteen.common.util.mapperCertifiMapper.deleteTempKey */
+	</delete>
+
+	<select id="getTempKey" parameterType="String" resultType="String">
+		SELECT TEMP_KEY
+		FROM CERTIFICATION_TEMPKEY
+		WHERE PHONE = #{value }
+
+		/* co.kr.fourteen.common.util.co.kr.fourteen.common.util.mapperCertifiMapper.getTempKey */
+	</select>
+
+	<insert id="insertCertificationKey" parameterType="HashMap">
+
+		MERGE INTO CERTIFICATION_TEMPKEY
+				USING DUAL
+				ON(PHONE = #{phone })
+			WHEN MATCHED THEN
+				UPDATE SET TEMP_KEY = #{tempKey }
+			WHEN NOT MATCHED THEN
+				INSERT (
+					PHONE
+					, TEMP_KEY
+				) VALUES (
+					#{phone }
+					, #{tempKey }
+				)
+
+		/* co.kr.fourteen.common.util.co.kr.fourteen.common.util.mapperCertifiMapper.insertCertificationKey */
+	</insert>
+
+</mapper>

@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+@media all and (max-width:500px) {
+  .wrap {
+    min-height: 520px !important;
+  }
+
+  .wrap main {
+    width: 90%;
+    box-sizing: border-box;
+
+  }
+
+  .wrap main h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.wrap {
+  position: relative;
+  min-height: 600px;
+}
+
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 400px;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+h2 {
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+main div {
+  margin: 10px 0;
+}
+
+main div label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+main div input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+main div input:focus{
+  outline: none;
+  border: 1px solid #0067F4;
+}
+
+button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 15px 10px;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(to right, #0067F4 0%, #5423CF 100%);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(to left, #0067F4 0%, #5423CF 100%);
+}
+
+.find_wrap {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.find_wrap li {
+  margin: 0 5px;
+  display: inline-block;
+  font-size: 14px;
+  position: relative;
+}
+
+.find_wrap li a {
+  color: #888;
+}
+
+.find_wrap li a:hover {
+  color: #333;
+}
+
+.find_wrap li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 12px;
+  top: 1.5px;
+  right: -8px;
+  background-color: #888;
+}

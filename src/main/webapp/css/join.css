@@ -1,0 +1,103 @@
+body {
+    background: #EEF0FE;
+}
+body .wrap {
+    position: relative;
+    min-height: 950px;
+    margin-bottom: 6rem !important;
+}
+body .wrap main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    width: 400px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+body .wrap main h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2rem;
+}
+body .wrap main div {
+    position: relative;
+    margin: 10px 0;
+}
+body .wrap main div div {
+    position: relative;
+    margin: 0;
+}
+body .wrap main div div button {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    padding: 5px 10px;
+    background-color: #0067f4;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+body .wrap main div:nth-of-type(5) div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+body .wrap main div:nth-of-type(5) div span {
+    display: inline-block;
+    margin: 0 10px;
+    color: #333;
+}
+body .wrap main div:nth-of-type(5) div select {
+    margin-left: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+body .wrap main div label {
+    display: block;
+    margin-bottom: 10px;
+}
+body .wrap main div label span {
+    font-size: 12px;
+    color: red;
+}
+body .wrap main div input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+body .wrap main div input:focus {
+    outline: none;
+    border: 1px solid #0067f4;
+}
+body .wrap main div .warning {
+    display: inline-block;
+    margin: 5px 0;
+    font-size: 12px;
+    opacity: 0;
+    color: red;
+}
+body .wrap main div select {
+    padding: 10px;
+}
+body .wrap main .join-btn {
+    margin-top: 10px;
+    padding: 15px 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    background: linear-gradient(to right, #0067F4 0%, #5423CF 100%);
+}
+body .wrap main .join-btn:hover {
+    background: linear-gradient(to left, #0067F4 0%, #5423CF 100%);
+}/*# sourceMappingURL=join.css.map */

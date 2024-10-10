@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.kr.fourteen.cyj.login.mapper.CyjLoginMapper">
+
+	<!-- 주의사항
+	이렇게 하나씩 대입되는 이름들을 맞춰주면 데이터를 잘 받아온다
+	주의할 점은 이름이 다른 것들만 써주는 것이 아니라 써주려면 전부 다 써줘야 한다는 것 -->
+
+	<sql id="selectUserWhere">
+		WHERE USER_ID = #{userId }
+	</sql>
+
+	<select id="selectUserLoginCheck" parameterType="co.kr.fourteen.cyj.login.vo.CyjLoginVo" resultType="co.kr.fourteen.cyj.login.vo.CyjLoginVo">
+		SELECT	REGIST_NO
+			, USER_ID
+			, USER_PW
+			, TMPR_PW_NO
+			, USER_NM
+			, USER_EMAIL
+			, USER_PHONE
+			, USER_LEVEL
+			, USER_DEL_YN
+			, USER_DEL_DE
+			, PW_CHANGE_DT
+			, PW_FAIL_CNT
+			, USER_FIRST_ADDR
+			, USER_SECOND_ADDR
+			, LAST_CONTACT_FMT_DT
+			, USE_YN
+			, PW_CHG_YN
+			, ID_BLOCK_YN
+			, ID_BLOCK_REASON
+			, OTP_YN
+			, MOD_DE
+		FROM USER_INFO
+		<include refid="selectUserWhere" />
+
+		/* co.kr.fourteen.cyj.login.mapper.selectUserLoginCheck */
+	</select>
+
+	<select id="selectOtpCodeCheck" parameterType="String" resultType="String">
+		SELECT OTP_KEY
+			FROM OTP_INFO
+		WHERE 1=1
+			AND USER_ID = #{value }
+
+		/* co.kr.fourteen.cyj.login.mapper.selectOtpCodeCheck */
+	</select>
+
+	<update id="updateFalPw" parameterType="co.kr.fourteen.cyj.login.vo.CyjLoginVo">
+		UPDATE USER_INFO SET
+		PW_FAIL_CNT = PW_FAIL_CNT + 1
+		WHERE USER_ID = #{userId }
+
+		/* co.kr.fourteen.cyj.login.mapper.updateFalPw */
+	</update>
+
+	<insert id="loginHist" parameterType="co.kr.fourteen.cyj.login.vo.CyjLoginVo">
+		INSERT INTO USER_LOGIN_HIST (
+			SEQ
+			, USER_ID
+			, REG_DT
+			, LOGIN_TYPE
+		) VALUES (
+			USER_INFO_SEQ.NEXTVAL
+			, #{userId }
+			, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
+			, 'I'
+		)
+
+		/* co.kr.fourteen.cyj.login.mapper.loginHist */
+	</insert>
+
+	<update id="updateLoginUserInfo" parameterType="co.kr.fourteen.cyj.login.vo.CyjLoginVo">
+		UPDATE USER_INFO SET
+		LAST_CONTACT_FMT_DT = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
+		, PW_FAIL_CNT = 0
+		WHERE USER_ID = #{userId }
+
+		/* co.kr.fourteen.cyj.login.mapper.updateLoginUserInfo */
+	</update>
+
+	<insert id="otpMerge" parameterType="co.kr.fourteen.cyj.login.vo.CyjLoginVo">
+		MERGE INTO OTP_INFO
+			USING DUAL
+			ON(USER_ID = #{userId })
+		WHEN MATCHED THEN
+			UPDATE SET
+				USER_EMAIL = #{userEmail }
+				, OTP_KEY = #{otpKey }
+				, OTP_URL = #{otpUrl }
+				, UPDATE_DT = TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
+		WHEN NOT MATCHED THEN
+			INSERT (
+				SEQ
+				, USER_ID
+				, USER_EMAIL
+				, OTP_KEY
+				, OTP_URL
+				, REG_DT
+			) VALUES (
+				OTP_INFO_SEQ.NEXTVAL
+				, #{userId }
+				, #{userEmail }
+				, #{otpKey }
+				, #{otpUrl }
+				, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')
+			)
+
+		/* co.kr.fourteen.cyj.login.mapper.otpMerge */
+	</insert>
+
+	<update id="updateUserOtpYn" parameterType="co.kr.fourteen.cyj.login.vo.CyjLoginVo">
+		UPDATE USER_INFO SET
+		OTP_YN = 'Y'
+		WHERE USER_ID = #{userId }
+
+		/* co.kr.fourteen.cyj.login.mapper.updateUserOtpYn */
+	</update>
+
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+   <definition name="kcmMainTemplate" template="/WEB-INF/tiles/kcm/mainPageLayout.jsp">
+      <put-attribute name="title" value="Chnops System" />
+      <put-attribute name="kcmHeader" value="/WEB-INF/include/tiles/include-header.jsp" />
+      <put-attribute name="kcmFooter" value="/WEB-INF/include/tiles/include-footer.jsp" />
+      <put-attribute name="kcmMenu" value="/WEB-INF/tiles/kcm/include-kcmMenu.jsp" />
+   </definition>
+
+   <definition name="kcmUserTemplate" template="/WEB-INF/tiles/kcm/userPageLayout.jsp">
+      <put-attribute name="title" value="Chnops System" />
+      <put-attribute name="kcmHeader" value="/WEB-INF/include/tiles/include-header.jsp" />
+      <put-attribute name="kcmFooter" value="/WEB-INF/include/tiles/include-footer.jsp" />
+      <put-attribute name="kcmMenu" value="/WEB-INF/tiles/kcm/include-kcmMenu.jsp" />
+   </definition>
+
+   	<definition name="kcmLoginTemplate" template="/WEB-INF/tiles/kcm/loginPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="kcmHeader" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="kcmMenu" value="/WEB-INF/tiles/kcm/include-kcmMenu.jsp" />
+		<put-attribute name="kcmFooter" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<definition name="kcmOtpTemplate" template="/WEB-INF/tiles/kcm/otpPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="kcmHeader" value="/WEB-INF/include/tiles/include-header.jsp" />
+	</definition>
+
+	<definition name="kcmBoardTemplate" template="/WEB-INF/tiles/kcm/boardPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="kcmHeader" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="kcmFooter" value="/WEB-INF/include/tiles/include-footer.jsp" />
+		<put-attribute name="kcmMenu" value="/WEB-INF/tiles/kcm/include-kcmMenu.jsp" />
+	</definition>
+
+   <!-- 걸리는 거 -->
+   <definition name="kcm/main/*" extends="kcmMainTemplate">
+      <put-attribute name="kcmContent" value="/WEB-INF/views/kcm/main/{1}.jsp" />
+   </definition>
+
+   <definition name="kcm/user/*" extends="kcmUserTemplate">
+      <put-attribute name="kcmContent" value="/WEB-INF/views/kcm/user/{1}.jsp" />
+   </definition>
+
+   <definition name="kcm/login/*" extends="kcmLoginTemplate">
+      <put-attribute name="kcmContent" value="/WEB-INF/views/kcm/login/{1}.jsp" />
+   </definition>
+
+	<definition name="kcm/otp/*" extends="kcmOtpTemplate">
+		<put-attribute name="kcmContent" value="/WEB-INF/views/kcm/otp/{1}.jsp" />
+	</definition>
+
+	<definition name="kcm/board/*" extends="kcmBoardTemplate">
+		<put-attribute name="kcmContent" value="/WEB-INF/views/kcm/board/{1}.jsp" />
+	</definition>
+
+</tiles-definitions>

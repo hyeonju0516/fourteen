@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+
+	<definition name="jhjMainTemplate" template="/WEB-INF/tiles/jhj/mainPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<definition name="jhjUserTemplate" template="/WEB-INF/tiles/jhj/userPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/include/tiles/include-menu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<!-- <definition name="root" template="/WEB-INF/tiles/tilesLayout/emptyLayout.jsp"></definition> -->
+
+	<!-- 걸리는 거 -->
+	<definition name="jhj/main/*" extends="jhjMainTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/jhj/main/{1}.jsp" />
+	</definition>
+
+	<definition name="jhj/user/*" extends="jhjUserTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/jhj/user/{1}.jsp" />
+	</definition>
+
+	<definition name="jhj/login/*" extends="jhjMainTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/jhj/login/{1}.jsp" />
+	</definition>
+
+	<!-- <definition name="*/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+
+	<definition name="*/*/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+
+	<definition name="*/*/*/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp" />
+	</definition> -->
+</tiles-definitions>
+

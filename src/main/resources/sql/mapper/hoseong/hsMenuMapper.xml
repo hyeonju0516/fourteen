@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.kr.fourteen.hoseong.menu.mapper.KhsMenuMapper">
+
+	<select id="hsMainTopMenuList" resultType="co.kr.fourteen.hoseong.menu.vo.KhsMenuVo">
+		SELECT MENU_ID
+			, MENU_NM
+			, MENU_URL
+			, MENU_LEVEL
+			, MENU_ORD
+			, UP_MENU_ID
+			, TOP_YN
+			, USE_YN
+			, REG_ID
+			, REG_DT
+		FROM CMM_MENU
+		WHERE USER_ID = 'KHS'
+		ORDER BY MENU_LEVEL, MENU_ORD ASC
+	</select>
+
+</mapper>

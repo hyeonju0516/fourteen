@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- main -->
+	<definition name="seMainTemplate" template="/WEB-INF/tiles/ese/mainPageLayout.jsp">
+		<!-- <put-attribute name="title" value="테스트" /> -->
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="Header" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<!--<put-attribute name="seMenu" value="/WEB-INF/tiles/ese/cmm/eseHeader.jsp" />-->
+		<put-attribute name="Footer" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<!-- 걸리는 거 -->
+	<definition name="ese/main/*" extends="seMainTemplate">
+		<put-attribute name="seContent" value="/WEB-INF/views/ese/main/{1}.jsp" />
+	</definition>
+
+	<!-- user -->
+	<definition name="seUserTemplate" template="/WEB-INF/tiles/ese/user/userPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="Header" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="seMenu" value="/WEB-INF/tiles/ese/cmm/eseHeader.jsp" />
+		<put-attribute name="Footer" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<definition name="ese/user/*" extends="seUserTemplate">
+		<put-attribute name="seContent" value="/WEB-INF/views/ese/user/{1}.jsp" />
+	</definition>
+
+	<!-- login -->
+	<definition name="seLoginTemplate" template="/WEB-INF/tiles/ese/login/loginPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="Header" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="seMenu" value="/WEB-INF/tiles/ese/cmm/eseHeader.jsp" />
+		<put-attribute name="Footer" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<definition name="ese/login/*" extends="seLoginTemplate">
+		<put-attribute name="seContent" value="/WEB-INF/views/ese/login/{1}.jsp" />
+	</definition>
+
+
+	<!-- company -->
+	<definition name="seHistoryTemplate" template="/WEB-INF/tiles/ese/user/userPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="Header" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<!--<put-attribute name="seMenu" value="/WEB-INF/tiles/ese/cmm/eseHeader.jsp" />-->
+		<put-attribute name="Footer" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<definition name="ese/company/*" extends="seHistoryTemplate">
+		<put-attribute name="seContent" value="/WEB-INF/views/ese/company/{1}.jsp" />
+	</definition>
+
+
+	<definition name="otpPageTemplate" template="/WEB-INF/tiles/ese/otpPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp" />
+	</definition>
+
+	<definition name="ese/otp/*" extends="otpPageTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/ese/otp/{1}.jsp" />
+	</definition>
+
+
+
+
+
+
+</tiles-definitions>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+	<context:annotation-config />
+
+	<!-- 모든 어노테이션들을 자동으로 등록 시키겠다는 선언 -->
+	<mvc:annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<mvc:resources mapping="/**" location="/" />
+	<!-- <mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/img/**" location="/img/" />
+	<mvc:resources mapping="/common/**" location="/common/" /> -->
+
+
+	<!-- 컴포넌트(java bean) 자동 검색해서 객체를 생성 해준다 -->
+	<!-- 프로젝트에서 패키지 추가 시 등록  -->
+	<!-- ex) <context:component-scan base-package="com.co.kr2" /> 새로운 패키지 -->
+	<!-- base-package로 부터 스캔을 할 때, spring mvc에 관련된 Controller 타입만 스캔 한다.
+	기본 필터의 사용을 false로 지정하면 @Component, @Repository, @Service, @Controller
+	어노테이션을 사용하는 클래스를 bean으로 인식하지 않는다. -->
+	<!-- use-default-filters="false" 추가 하면 include-filter 속성으로 정의를 해줘야된다 -->
+	<context:component-scan base-package="co.kr.fourteen">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+
+	<!-- p:order="0" 이건 <beans:property name="order" value="0" /> 동일한거라 줄임 가능 -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />
+
+	<bean id="JSON_VIEW" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+		<property name="contentType" value="application/json;charset=UTF-8" />
+	</bean>
+
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" p:order="1">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+	</bean>
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>classpath:/tiles/*tiles-config.xml</value>
+				<!-- <value>classpath:/tiles/tiles-config.xml</value> -->
+			</list>
+		</property>
+	</bean>
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<!-- view resolver(뷰 리졸버, 뷰 해석기) beans 테그를 읽어서 메모리에 올린다. -->
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="2"
+		p:viewClass="org.springframework.web.servlet.view.JstlView"
+		p:prefix="/WEB-INF/views/"
+		p:suffix=".jsp">
+	</bean>
+
+	<!-- 스프링4 버전 셋팅법 -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" p:order="3" />
+
+	<!-- Json data를 받기 위한 설정 -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=UTF-8</value>
+							<value>application/json;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 스프링3 버전 셋팅법 -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="alwaysUseFullPath" value="true"/>
+	</bean>
+
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="alwaysUseFullPath" value="true" />
+		<property name="messageConverters">
+			<list>
+				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=UTF-8</value>
+							<value>application/json;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean> -->
+
+	<!-- spring 파비콘 적용법 -->
+	<!-- <mvc:resources mapping="/favicon.ico" location="/favicon.ico" /> -->
+
+	<!-- <mvc:cors>
+		<mvc:mapping path="/**" allowed-origins="*" allowed-methods="POST, GET" allow-credentials="true"/>
+	</mvc:cors> -->
+
+</beans>

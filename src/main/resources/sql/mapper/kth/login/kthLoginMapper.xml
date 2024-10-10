@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.kr.fourteen.taengEe.login.mapper.KthLoginMapper">
+
+    <select id="loginCheck" parameterType="co.kr.fourteen.taengEe.login.vo.KthLoginVo" resultType="co.kr.fourteen.taengEe.login.vo.KthLoginVo">
+        SELECT USER_ID
+            , USER_NM
+        FROM USER_INFO
+        WHERE USER_ID = #{userId}
+        AND USER_PW = #{userPw}
+    </select>
+
+</mapper>

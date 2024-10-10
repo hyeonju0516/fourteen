@@ -1,0 +1,14 @@
+.history .his_list {position: relative;}
+.history .his_list:before{content: ''; display: block; position: absolute;width: 1px; height: 98%; position: absolute; left: 50%; top: 22px; background: #dddddd}
+.history .his_list > li {margin-bottom: 120px; position: relative; z-index: 5}
+.history .his_list > li > div{float: right; width: 50%; padding-left: 60px; padding-right: 60px;}
+.history .his_list > li:nth-child(2n) > div{float: left}
+.history .his_list > li:after{content: ''; display: block; clear: both;}
+.history .his_list > li .year strong{display: block; text-align: left; font-family: 'Montserrat', sans-serif;font-size: 50px; color: #e8340c; font-weight: 500;}
+.history .his_list > li:nth-child(2n) .year strong{text-align: right;}
+.history .his_list > li .txt{padding-top: 7px}
+.history .his_list > li ul li{font-size: 20px; letter-spacing: -0.8px; color: #666666; line-height: 52px; position: /* REVIEW:  */}
+.history .his_list > li ul li i{display: inline-block;; height: 52px; vertical-align: top; position: relative;; top: 43px; left: 37px}
+.history .his_list > li ul li i.top{top: -30px}
+.history .his_list > li ul li{text-align: center}
+.history .his_list > li:nth-child(2n) ul li{text-align: center}

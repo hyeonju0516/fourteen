@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="mainPageTemplate" template="/WEB-INF/tiles/cyj/mainPageLayout.jsp">
+		<!-- <put-attribute name="title" value="테스트" /> -->
+		<put-attribute name="title" value="Chnops System" />
+		<!-- <put-attribute name="header" value="/WEB-INF/include/include-header.jsp" /> -->
+		<put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<definition name="userPageTemplate" template="/WEB-INF/tiles/cyj/userPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/include/tiles/include-menu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<definition name="loginPageTemplate" template="/WEB-INF/tiles/cyj/loginPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/include/tiles/include-menu.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<definition name="otpPageTemplate" template="/WEB-INF/tiles/cyj/otpPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp" />
+	</definition>
+
+	<definition name="boardPageTemplate" template="/WEB-INF/tiles/cyj/boardPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/include/tiles/include-menu.jsp" />
+		<put-attribute name="paging" value="/WEB-INF/include/tiles/include-paging.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<!-- <definition name="root" template="/WEB-INF/tiles/tilesLayout/emptyLayout.jsp"></definition> -->
+
+	<!-- 걸리는 거 -->
+	<definition name="cyj/main/*" extends="mainPageTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/cyj/main/{1}.jsp" />
+	</definition>
+
+	<definition name="cyj/user/*" extends="userPageTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/cyj/user/{1}.jsp" />
+	</definition>
+
+	<definition name="cyj/login/*" extends="loginPageTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/cyj/login/{1}.jsp" />
+	</definition>
+
+	<definition name="cyj/otp/*" extends="otpPageTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/cyj/otp/{1}.jsp" />
+	</definition>
+
+	<definition name="cyj/board/*" extends="boardPageTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/cyj/board/{1}.jsp" />
+	</definition>
+
+
+	<!-- <definition name="*/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+
+	<definition name="*/*/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+
+	<definition name="*/*/*/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp" />
+	</definition> -->
+</tiles-definitions>

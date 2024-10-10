@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.kr.fourteen.taengEe.oracle.mapper.KthoracleMapper">
+
+	<select id="selectUserInfoList" resultType="co.kr.fourteen.taengEe.oracle.vo.KthOracleVo">
+		SELECT *
+		FROM KTH_USER_INFO
+	</select>
+
+	<select id="selectUserInfo" parameterType="String" resultType="String">
+		SELECT PHONE
+		FROM KTH_USER_INFO
+		WHERE ID = #{userId}
+	</select>
+
+
+
+
+</mapper>

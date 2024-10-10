@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.kr.fourteen.hjh2.user.mapper.Jhj2UserMapper">
+
+	<select id="doubleCheckId" parameterType="String" resultType="int">
+		SELECT COUNT(USER_ID)
+		FROM USER_INFO
+		WHERE USER_ID = #{user_id }
+	</select>
+
+	<insert id="userJoin" parameterType="co.kr.fourteen.hjh2.user.vo.Jhj2UserInfoVo">
+		INSERT INTO USER_INFO (
+			USER_ID
+			, USER_PW
+			, USER_NM
+			, USER_EMAIL
+			, USER_PHONE
+			, USER_ZIP_CODE
+			, USER_FIRST_ADDR
+			, USER_SECOND_ADDR
+		) VALUES (
+			#{userId }
+			, #{userPw }
+			, #{userNm }
+			, #{userEmail }
+			, #{userPhone }
+			, #{userZipCode }
+			, #{userFirstAddr }
+			, #{userSecondAddr }
+		)
+   </insert>
+
+   <select id="userLogin" parameterType="map" resultType="co.kr.fourteen.hjh2.user.vo.Jhj2UserInfoVo">
+		SELECT
+			USER_ID
+			, USER_PW
+			, TMPR_PW_NO
+			, USER_NM
+			, USER_EMAIL
+			, USER_PHONE
+			, USER_ZIP_CODE
+			, USER_FIRST_ADDR
+			, USER_SECOND_ADDR
+			, USER_LEVEL
+			, USER_DEL_YN
+			, USER_DEL_DE
+			, REG_DE
+			, PW_CHANGE_DT
+			, PW_FAIL_CNT
+			, LAST_CONTACT_FMT_DT
+			, ENABLED
+			, IP_ADDR
+			, PW_CHG_YN
+			, ID_BLOCK_YN
+			, OTP_YN
+		FROM USER_INFO
+		WHERE USER_ID = #{user_id } AND USER_PW = #{user_pw }
+	</select>
+
+</mapper>

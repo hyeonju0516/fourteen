@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="jhj2Template" template="/WEB-INF/tiles/jhj2/mainPageLayout.jsp">
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="hjheader" value="/WEB-INF/tiles/jhj2/jhj2header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<definition name="jhj2/main/*" extends="jhj2Template">
+		<put-attribute name="content" value="/WEB-INF/views/jhj2/main/{1}.jsp" />
+	</definition>
+
+	<definition name="jhj2/user/*" extends="jhj2Template">
+		<put-attribute name="content" value="/WEB-INF/views/jhj2/user/{1}.jsp" />
+	</definition>
+
+</tiles-definitions>

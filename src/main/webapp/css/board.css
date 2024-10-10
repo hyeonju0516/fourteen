@@ -1,0 +1,87 @@
+main {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #EEF0FE;
+}
+main .board {
+  width: 100%;
+  max-width: 90%;
+  padding: 10rem 0;
+}
+main .board h1 {
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+main .board form {
+  margin-bottom: 3rem;
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+main .board form label {
+  display: none;
+}
+main .board form input[type=text] {
+  height: 40px;
+  width: 40%;
+  padding: 0 1rem;
+  border: 1px solid #ccc;
+  border-right: none;
+}
+main .board form input[type=text]:focus {
+  outline: none;
+}
+main .board form button {
+  height: 43px;
+  margin-left: -1px;
+  padding: 0.6rem 2rem;
+  border: none;
+  background-color: #0067f4;
+  color: #fff;
+  cursor: pointer;
+}
+main .board table {
+  width: 100%;
+  text-align: center;
+}
+main .board table thead {
+  color: #333;
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+}
+main .board table thead tr td {
+  padding: 0.75rem 0;
+}
+main .board table tbody tr {
+  border-bottom: 1px solid #ccc;
+}
+main .board table tbody tr td {
+  padding: 1rem 0;
+  font-size: 14px;
+}
+main .board table tbody tr td.postTitle {
+  width: 50%;
+}
+main .board table tbody tr td.postTitle a {
+  color: #333;
+}
+main .board .paging {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .board .paging button {
+  font-size: 1rem;
+  color: #333;
+  background-color: transparent;
+  border: none;
+}
+main .board .paging p {
+  margin: 0 1rem;
+}/*# sourceMappingURL=board.css.map */

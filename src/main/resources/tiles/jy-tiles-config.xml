@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="jyMainPageTemplate" template="/WEB-INF/tiles/jiyy/mainPageLayout.jsp">
+		<!-- <put-attribute name="title" value="테스트" /> -->
+		<put-attribute name="title" value="Chnops System" />
+		<put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="headerMenu" value="/WEB-INF/views/jiyy/include/header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<!-- 걸리는 거 -->
+	<definition name="jiyy/main/*" extends="jyMainPageTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/jiyy/main/{1}.jsp" />
+	</definition>
+
+	<definition name="jiyy/user/*" extends="jyMainPageTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/jiyy/user/{1}.jsp" />
+	</definition>
+
+	<definition name="jiyy/prac/*" extends="jyMainPageTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/jiyy/prac/{1}.jsp" />
+	</definition>
+
+</tiles-definitions>

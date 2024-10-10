@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- 다국어 처리 위한 메세지 설정 -->
+	<!-- ResourceBundleMessageSource 부분이 바로 위에서 저장된 messages파일들을 읽어오는 부분이다. 해당언어의 파일들이 존재하면 된다. basenames에서 경로/파일명앞부분를 적어준다. -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<!-- 메세지 파일의 위치를 지정합니다. message-common_언어.properties 파일을 찾는다 -->
+				<value>locale/messages/message-common</value>
+			</list>
+		</property>
+		<!-- 파일의 기본 인코딩을 지정 -->
+		<property name="defaultEncoding" value="UTF-8" />
+		<!-- properties 파일이 변경되었는지 확인하는 주기를 지정한다. 60초 간격으로 지정. -->
+		<property name="cacheSeconds">
+			<value>60</value>
+		</property>
+	</bean>
+
+	<!-- localeResolver에서 다국어처리 방법을 선택한다. localeResolver는 3가지 종류가 있다. 디폴트는 AceeptHeaderLocaleResolver이다.
+	즉, localeResolver를 별도로 구현하지 않으면 AceeptHeaderLocaleResolver가 브라우저의 설정된 언어값으로 읽어들여 처리한다. 이 값은 변경이 불가능하다.
+	따라서 사용자가 링크를 통해서 영어, 한국어, 일어등으로 자유롭게 변경하려면 localeResolver를 AceeptHeaderLocaleResolver가 아닌 다른 것으로 선언해야 한다.
+	반면에 그냥 브라우저에 세팅된 언어로 설정하려면 localeResolver를 없애면 된다. -->
+
+	<!-- SessionLocaleResolver request가 가지고 있는 session으로 부터 locale정보를 가져온다.
+	session에 있는 값을 가져오되, 만약 값이 없다면 defaultLocale로 설정을 지정할 수 있다. 아마 맨처음 접근시에는 session값이 없으므로 defaultLocale를 읽게 된다.
+	위에서는 SessionLocaleResolver를 정의하고 defaultLocale를 ko로 했으므로 브라우저에 세팅된 언어보다 아래에 설정된 언어로 표시하게 된다. -->
+	<!-- 언어 정보를 세션에 저장하여 사용. -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="ko" />
+	</bean>
+
+	<!-- CookieLocaleResolver는 이름에서 알수있듯이 언어를 변경하고 쿠키에 값을 저장한다. -->
+	<!--
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" >
+		<property name="defaultLocale" value="ko" />
+		<property name="cookieName" value="home-lang"/>
+		<property name="cookieMaxAge" value="-1"/>
+		<property name="cookiePath" value="/"/>
+	</bean>
+ 	-->
+ 	<!-- 만약 저장된 쿠키값이 없어서 특정값으로 세팅하고자 한다면 defaultLocale를 추가하면 된다. -->
+	<!-- <property name="defaultLocale" value="ko" /> -->
+	<!-- SessionLocaleResolver나 CookieLocaleResolver에 defaultLocale이 없다면 브라우저의 언어설정을 따르게 된다. -->
+</beans>

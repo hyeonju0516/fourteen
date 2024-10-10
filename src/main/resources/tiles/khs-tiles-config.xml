@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="khsMainTemplate" template="/WEB-INF/tiles/khs/mainPageLayout.jsp">
+		<!-- <put-attribute name="title" value="테스트" /> -->
+		<put-attribute name="title" value="HoSeong System" />
+		<put-attribute name="hsMenu" value="/WEB-INF/views/hoseong/fragment/menu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="hsFooter" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<!-- <definition name="root" template="/WEB-INF/tiles/tilesLayout/emptyLayout.jsp"></definition> -->
+
+	<!-- 걸리는 거 -->
+	<definition name="hoseong/login/*" extends="khsMainTemplate">
+		<put-attribute name="hsContent" value="/WEB-INF/views/hoseong/login/{1}.jsp" />
+	</definition>
+
+	<definition name="hoseong/khs/*" extends="khsMainTemplate">
+		<put-attribute name="hsContent" value="/WEB-INF/views/hoseong/khs/{1}.jsp" />
+	</definition>
+
+	<definition name="hoseong/user/*" extends="khsMainTemplate">
+		<put-attribute name="hsContent" value="/WEB-INF/views/hoseong/user/{1}.jsp" />
+	</definition>
+
+	<!-- <definition name="*/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+
+	<definition name="*/*/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+
+	<definition name="*/*/*/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp" />
+	</definition> -->
+</tiles-definitions>

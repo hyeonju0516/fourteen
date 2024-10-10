@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- 데이터 베이스 연동 (oracle) -->
+	<bean id="dataSourceOracle" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<!-- <property name="url" value="jdbc:oracle:thin:@192.168.219.158:1235:SKY" /> -->
+		<property name="url" value="jdbc:oracle:thin:@www.skysky.co.kr:1235:SKY" />
+		<property name="username" value="fourteen" />
+		<property name="password" value="7777" />
+	</bean>
+
+	<bean id="logOracle" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="dataSourceOracle" />
+		<property name="logFormatter">
+			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE" />
+				<property name="sqlPrefix" value="SQL   :  &#10;&#10;                        "/>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="oracleSqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg ref="oracleSessionFactory" />
+	</bean>
+
+</beans>

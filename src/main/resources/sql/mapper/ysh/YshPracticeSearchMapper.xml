@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.kr.fourteen.seHyun.practice.search.mapper.YshSearchMapper">
+
+    <select id="idSearching" parameterType="String" resultType="boolean">
+        SELECT
+            COUNT(USER_ID) AS ID_SEARCH_RESULT
+        FROM USER_INFO
+        WHERE USER_ID = #{userId}
+    </select>
+
+    <select id="joinChecking" parameterType="String" resultType="co.kr.fourteen.seHyun.practice.search.vo.YshSearchVo">
+        SELECT
+            USER_ID
+            , USER_NM
+        FROM USER_INFO
+        WHERE USER_NM = #{userName}
+    </select>
+</mapper>

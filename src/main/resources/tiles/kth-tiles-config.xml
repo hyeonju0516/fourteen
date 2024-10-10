@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="kthMainTemplate" template="/WEB-INF/tiles/kth/mainPageLayout.jsp">
+		<!-- <put-attribute name="title" value="테스트" /> -->
+		<put-attribute name="title" value="Chnops System" />
+		<!-- <put-attribute name="header" value="/WEB-INF/include/include-header.jsp" /> -->
+		<put-attribute name="kthHeader" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="kthMenu" value="/WEB-INF/include/tiles/include-menu.jsp" />
+		<put-attribute name="kthFooter" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<definition name="kthUserTemplate" template="/WEB-INF/tiles/kth/userPageLayout.jsp">
+		<!-- <put-attribute name="title" value="테스트" /> -->
+		<put-attribute name="title" value="Chnops System" />
+		<!-- <put-attribute name="header" value="/WEB-INF/include/include-header.jsp" /> -->
+		<put-attribute name="kthHeader" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="kthMenu" value="/WEB-INF/include/tiles/include-menu.jsp" />
+		<put-attribute name="kthFooter" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<definition name="kthLoginTemplate" template="/WEB-INF/tiles/kth/loginPageLayout.jsp">
+		<!-- <put-attribute name="title" value="테스트" /> -->
+		<put-attribute name="title" value="Chnops System" />
+		<!-- <put-attribute name="header" value="/WEB-INF/include/include-header.jsp" /> -->
+		<put-attribute name="kthHeader" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="kthMenu" value="/WEB-INF/include/tiles/include-menu.jsp" />
+		<put-attribute name="kthFooter" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+	<definition name="kthFreeBoardTemplate" template="/WEB-INF/tiles/kth/freeBoardLayout.jsp">
+		<!-- <put-attribute name="title" value="테스트" /> -->
+		<put-attribute name="title" value="Chnops System" />
+		<!-- <put-attribute name="header" value="/WEB-INF/include/include-header.jsp" /> -->
+		<put-attribute name="kthHeader" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="kthMenu" value="/WEB-INF/include/tiles/include-menu.jsp" />
+		<put-attribute name="kthFooter" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>
+
+<!--	<definition name="kthUserTemplate" template="/WEB-INF/tiles/kth/userPageLayout.jsp">
+		&lt;!&ndash; <put-attribute name="title" value="테스트" /> &ndash;&gt;
+		<put-attribute name="title" value="Chnops System Join" />
+		&lt;!&ndash; <put-attribute name="header" value="/WEB-INF/include/include-header.jsp" /> &ndash;&gt;
+		<put-attribute name="kthUserHeader" value="/WEB-INF/include/tiles/include-header.jsp" />
+		<put-attribute name="kthUserFooter" value="/WEB-INF/include/tiles/include-footer.jsp" />
+	</definition>-->
+
+	<!-- <definition name="root" template="/WEB-INF/tiles/tilesLayout/emptyLayout.jsp"></definition> -->
+
+	<!-- 걸리는 거 -->
+	<definition name="kth/main/*" extends="kthMainTemplate">
+		<put-attribute name="kthContent" value="/WEB-INF/views/kth/main/{1}.jsp" />
+	</definition>
+
+	<definition name="kth/user/*" extends="kthUserTemplate">
+		<put-attribute name="kthContent" value="/WEB-INF/views/kth/user/{1}.jsp" />
+	</definition>
+
+	<definition name="kth/login/*" extends="kthLoginTemplate">
+		<put-attribute name="kthContent" value="/WEB-INF/views/kth/login/{1}.jsp" />
+	</definition>
+
+	<definition name="kth/freeBoard/*" extends="kthFreeBoardTemplate">
+		<put-attribute name="kthContent" value="/WEB-INF/views/kth/freeBoard/{1}.jsp" />
+	</definition>
+
+<!--	<definition name="kth/user/*" extends="kthUserTemplate">-->
+<!--		<put-attribute name="kthContent" value="/WEB-INF/views/kth/user/{1}.html" />-->
+<!--	</definition>-->
+
+<!--	<definition name="kth/user/*" extends="kthUserTemplate">
+		<put-attribute name="kthUserContent" value="/WEB-INF/views/kth/user/{1}.jsp" />
+	</definition>-->
+
+
+	<!-- <definition name="*/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+
+	<definition name="*/*/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	</definition>
+
+	<definition name="*/*/*/*" extends="root">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp" />
+	</definition> -->
+</tiles-definitions>

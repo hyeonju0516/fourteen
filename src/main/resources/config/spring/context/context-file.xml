@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- 파일업로드에 필요한 bean -->
+	<!-- 요청을 파싱할 때 사용할 캐릭터 인코딩. 지정하지 않을 경우, HttpServletRequest.setCharacterEncoding() 메소드로 지정한 캐릭터 셋이 사용된다. 아무값도 없을 경우 ISO-8859-1을 사용 한다. -->
+	<bean id="filterMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 파일 업로드 최대 용량(byte) -->
+		<property name="maxUploadSize" value="-1" />
+		<property name="maxInMemorySize" value="2140000000" />
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+
+	<!-- 파일업로드를 위한 디렉토리 설정 -->
+	<!-- String uploadPath =  new String("c:/upload"); 이거랑 동일 한거인데 매번 할 수 없어서 빈에 등록 시키는 거다-->
+	<bean id="uploadPath" class="java.lang.String">
+		<constructor-arg value="C:\worksky\upload" />		<!-- 로컬에 있는 드라이브 경로 설정이다. -->
+	</bean>
+</beans>

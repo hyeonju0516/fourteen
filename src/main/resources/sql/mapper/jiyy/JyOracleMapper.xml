@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.kr.fourteen.jiyy.oracle.mapper.JyOracleMapper">
+
+	<select id="selectUserInfo" parameterType="String" resultType="String">
+		SELECT
+			PHONE
+		FROM JIYY_USER_INFO
+
+		WHERE USERNO = #{userId}
+	</select>
+
+	<select id="selectUserID" parameterType="String" resultType="String">
+		SELECT
+			ID
+		FROM JIYY_USER_INFO
+
+		WHERE ID = #{name}
+	</select>
+
+	<insert id="addInfo" parameterType="co.kr.fourteen.jiyy.oracle.vo.JyOracleVo">
+		INSERT INTO JIYY_USER_INFO(
+			ID
+			, NAME
+			, PHONE
+		) VALUES (
+			#{id}
+			, #{name}
+			, #{phone}
+		)
+	</insert>
+</mapper>

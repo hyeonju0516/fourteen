@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+@media all and (max-width:800px) {
+  body .wrap{
+    margin: 100px auto;
+  }
+  
+  .wrap .text_box h2{
+    font-size: 2.5rem;
+  }
+
+  .wrap .text_box p{
+    font-size: 15px;
+  }
+
+  .wrap .text_box .line{
+    margin: 3rem auto;
+  }
+
+  .wrap .partner_list li{
+    width:33.33%;
+  }
+}
+
+@media all and (max-width:500px) {
+  .wrap .text_box h2{
+    font-size: 2rem;
+  }
+
+  .wrap .text_box .line{
+    height:50px;
+  }
+
+  .wrap .text_box p{
+    font-size: 13px;
+  }
+
+  .wrap .partner_list li{
+    width:50%;
+  }
+
+  .wrap .partner_list li > div{
+    height:150px;
+  }
+
+  .wrap .partner_list li .partner_img{
+    height:calc(100% - 40px);
+  }
+
+  .wrap .partner_list li .partner_img img{
+    max-height:calc(100% - 40px);
+  }
+
+  .wrap .partner_list li > div > p{
+    height:40px;
+    font-size:0.8rem;
+  }
+}
+
+.wrap{
+  max-width:1200px;
+  margin:150px auto;
+}
+
+.text_box{
+  text-align: center;
+}
+
+.text_box h2{
+  font-size:64px;
+  font-weight: 800;
+  padding:30px 0;
+}
+
+.text_box p{
+  font-size: 20px;
+  font-weight: 500;
+  line-height:1.5;
+}
+
+.text_box .line{
+  width:1px;
+  height:80px;
+  margin:5rem auto;
+  background-color: #333;
+}
+
+.partner_list{
+  display:flex;
+  flex-flow: wrap;
+}
+
+.partner_list li{
+  width:25%;
+  padding:10px;
+  box-sizing: border-box;
+}
+
+.partner_list li > div{
+  height:200px;
+  text-align: center;
+  border:1px solid #ccc;
+  transition:0.3s;
+}
+
+.partner_list li:hover > div{
+  border:1px solid #0067F4 ;
+}
+
+.partner_list li .partner_img{
+  width:50%;
+  height:calc(100% - 50px);
+  position:relative;
+  margin:0 auto;
+}
+
+.partner_list li .partner_img img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:calc(100% - 50px);
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+.partner_list li > div > p{
+  height:50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: rgba(255,255,255,0.6);
+  border-top:1px solid #ccc;
+  box-sizing: border-box;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  transition:0.3s;
+}
+
+.partner_list li:hover > div > p{
+  border-top:1px solid #0067F4 ;
+}
